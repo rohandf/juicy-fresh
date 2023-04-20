@@ -40,7 +40,8 @@
             <h1>
                 <font color="white" face="arial">Register</font>
             </h1>
-            <form action="registersub/">
+            <form action="registersub/" method="post">
+                {% csrf_token %}
                 <input type="text" placeholder="Username" required name="uname"><br>
                 <input type="text" placeholder="First Name" name="fname"><br>
                 <input type="text" placeholder="Last Name" name="lname"><br>

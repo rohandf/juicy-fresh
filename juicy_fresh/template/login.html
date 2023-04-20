@@ -40,7 +40,8 @@
             <h1>
                 <font color="white" face="arial">Login</font>
             </h1>
-            <form action="loginsub/">
+            <form action="loginsub/" method="post">
+                {% csrf_token %}
                 <input type="text" placeholder="Username" required name="uname"><br>
                 <input type="password" placeholder="Password" required name="pword"><br>
                 <button type="submit">Submit</button>
