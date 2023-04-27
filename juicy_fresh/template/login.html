@@ -40,7 +40,8 @@
             <h1>
                 <font color="white" face="arial">Login</font>
             </h1>
-            <form action="loginsub/" method="post">
+            <font color="red" face="arial"><b>{{msg}}</b></font>
+            <form action="{% url 'loginpage' %}" method="post">
                 {% csrf_token %}
                 <input type="text" placeholder="Username" required name="uname"><br>
                 <input type="password" placeholder="Password" required name="pword"><br>
