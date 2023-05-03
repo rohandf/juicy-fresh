@@ -194,12 +194,12 @@
     <div class="container-fluid">
 
       <div class="fruit_container">
-        {% for data in 'abcd' %}
+        {% for i in data %}
         <div class="box">
-          <img src="{% static 'images/f-1.jpg' %}" alt="">
+          <img src="{{i.img.url}}" alt="">
           <div class="link_box">
             <h5>
-              Orange
+              {{i.name}}
             </h5>
             <a href="">
               Buy Now

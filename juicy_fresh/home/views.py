@@ -1,11 +1,14 @@
 from django.shortcuts import render,redirect
 from django.contrib import auth
 from django.contrib.auth.models import User 
+from product.models import fruits
 
 # Create your views here.
 
 def index(request):
-    return render(request,'index.html')
+    obj = fruits.objects.all()
+    print("hi",obj)
+    return render(request,'index.html',{'data':obj})
 
 def test(r):
     return render(r,'test.html',{'val':'java'})
