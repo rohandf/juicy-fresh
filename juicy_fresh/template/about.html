@@ -75,6 +75,14 @@
       
       
     }
+    .recent {
+      margin-left: 10px;
+      border-radius: 17px;
+      
+    }
+    .recent:hover{
+      scale: 1.05;
+    }
   </style>
 </head>
 
@@ -149,8 +157,11 @@
       <div class="row">
         <div class="col-md-6 px-0">
           <div class="img-box">
-            <img src={{fruit.img.url}} alt="">
+            <img src="{{fruit.img.url}}" alt="">
           </div>
+          {% for i in rec %}
+          <a href="{% url 'prod' %}?id={{i.id}}"><img src="{{i.img.url}}" width="150px" height="150" class="recent"></a>
+          {% endfor %}
         </div>
         <div class="col-md-5">
           <div class="detail-box">
@@ -182,7 +193,7 @@
             <b>{{i.user}}</b>&nbsp;&nbsp;<small>{{i.date}}</small><br>
             <small>{{i.msg}}</small>&nbsp;
             <font>{{i.like}}</font>
-            <a href="like/"><img src="{% static 'images/like.png' %}" width="20px" height="20px"></a>
+            <a href="like/?id={{i.id}}"><img src="{% static 'images/like.png' %}" width="20px" height="20px"></a>
           </p>
         {% endfor %}
       {% else %}
@@ -191,9 +202,9 @@
         </h2>
       {% endif %}
     </div>
-    <form action="{% url 'testpage' %}">
+    <form action="{% url 'cmtsubmit' %}">
     <div class="commententry">
-      <textarea name="usercomment" id="" cols="30" rows="3" placeholder="Leave a comment"></textarea><br>
+      <textarea name="usercomment" id="" cols="30" rows="3" placeholder="Leave a comment" required></textarea><br>
       <input type="hidden" value="{{user.username}}" name="user">
       <input type="hidden" value="{{fruit.id}}" name="pid">
       <button>Submit</button>
