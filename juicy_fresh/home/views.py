@@ -66,3 +66,6 @@ def logout(request):
     res = redirect('/')
     res.delete_cookie('user')
     return res
+
+def feed(r):
+    return render(r,'test.html')
