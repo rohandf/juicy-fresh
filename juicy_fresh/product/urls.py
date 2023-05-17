@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
      path('',views.about,name='prod'),
      path('cmt/',views.cmt,name='cmtsubmit'),
-     path('like/',views.like)
+     path('like/',views.like),
+     path('autocmplt/',views.autocmplt,name='acmplt'),
 ]

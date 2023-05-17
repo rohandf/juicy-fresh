@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .searchbox input
+    {
+        width: 250px;
+        height: 25px;
+        border-radius: 7px;
+        border-color: orange;
+        border-style:solid;
+        border-left: 0px;
+        border-right-width: 4px;
+        border-width: 3px;
+        margin-left: 38%;
+        margin-top: 20%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-right-color: gray;
+        padding-left: 10px;
+    }
+    .searchbox button
+    {
+        height: 33px;
+        width: 75px;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border-width: 0px;
+        margin-left: -4px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+    <script>
+        $( function() {
+          $( "#tags" ).autocomplete({
+            source: "{% url 'acmplt' %}"
+          });
+        } );
+    </script>
+
+</head>
+
+<body bgcolor="black">
+    <div class="searchbox">
+        <form action="{% url 'homepage' %}" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Search here" name="query" id="tags">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</body>
+</html>

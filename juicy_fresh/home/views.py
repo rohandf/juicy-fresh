@@ -6,17 +6,20 @@ from product.models import fruits
 # Create your views here.
 
 def index(request):
-    obj = fruits.objects.all()
-    
-    if 'user' in request.COOKIES:
-        uname = request.COOKIES['user']
+    if request.method=='POST':
+        q = request.POST['query']
+        obj = fruits.objects.filter(name__istartswith=q)
     else:
-        uname = ""
+        obj = fruits.objects.all()
     
-    return render(request,'index.html',{'data':obj,'name':uname})
+    return render(request,'index.html',{'data':obj})
 
 def test(r):
-    return render(r,'test.html',{'val':'java'})
+    query = r.GET['query']
+    return render(r,'test.html',{'val':query})
+
+def search(r):
+    return render(r,'search.html')
 
 def login(request):
     if request.method=='POST':
